@@ -1,7 +1,7 @@
-/bin/
-/obj/
+Train360App/bin
+Train360App/obj
 .DS_Store
 *.log
 .vs/
-**/Migration/*
-appsettings.json
+Train360App/Migrations
+Train360App/appsettings.json
