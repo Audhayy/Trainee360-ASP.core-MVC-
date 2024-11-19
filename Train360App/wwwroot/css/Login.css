@@ -1,0 +1,167 @@
+﻿/* General Reset and Font Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Base Styling */
+html, body {
+    height: 100%;
+    background-color: #f5f5f5;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the body covers the full viewport height */
+}
+
+/* Header Styling */
+header {
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+    header .navbar {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+
+/* Main Content Styling */
+main {
+    flex-grow: 1; /* Allows the main content to take up available vertical space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #f5f5f5;
+    overflow: hidden; /* Prevents content from overflowing beyond header/footer */
+}
+
+/* Container - Fills available main content area */
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px; /* Optional max-width for centering */
+    height: 100%; /* Takes up all available space within main */
+}
+
+/* Left and Right Half-Screens */
+.half-screen {
+    width: 50%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto; /* Ensures scrolling within the login/sign-up sections only */
+    max-height: 100%; /* Ensures content is contained within main area */
+}
+
+.welcome-section {
+    background-color: #4a90e7;
+    color: white;
+    text-align: center;
+}
+
+    .welcome-section h1 {
+        font-size: 3rem;
+    }
+
+.login-section {
+    background-color: white;
+    /*    display: flex;*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Ensures it occupies full width of half-screen */
+}
+
+    .login-section h2 {
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+    }
+
+/* Form Input and Button Styling */
+.input-box {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 15px;
+}
+
+    .input-box label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .input-box input, .input-box select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+    .checkbox label {
+        margin-left: 5px;
+    }
+
+button {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4a90e2;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    button:hover {
+        background-color: #357ab8;
+    }
+
+.forgot-password {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 10px;
+}
+
+    .forgot-password a {
+        color: #4a90e2;
+        text-decoration: none;
+    }
+
+
+/* Footer Styling */
+footer {
+    width: 100%;
+    background-color: #f5f5f5;
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+    margin-top: auto; /* Pushes footer to the bottom of the page */
+}
+
+header, footer, nav {
+    border: none;
+}
+
+    footer .container {
+        font-size: 0.9rem;
+    }

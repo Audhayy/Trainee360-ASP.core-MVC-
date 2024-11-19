@@ -30,10 +30,12 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectio
 
             app.UseAuthorization();
 
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
-
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                     name: "login",
+                 pattern: "{controller=Login}/{action=Login}/{id?}");
+            });
             app.Run();
         }
     }
