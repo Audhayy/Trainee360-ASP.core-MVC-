@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Trainee360App.Repositories;
+using Trainee360App.Services;
 
 namespace Trainee360App
 {
@@ -12,6 +14,8 @@ namespace Trainee360App
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IUserService, UserService>();
 
             var app = builder.Build();
 

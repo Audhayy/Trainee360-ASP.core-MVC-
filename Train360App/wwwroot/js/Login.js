@@ -43,6 +43,14 @@
         }
     });
 
+    window.TriggerFormEvent = function () {
+        if (loginForm) {
+            loginForm.dispatchEvent(new Event("submit")); // Trigger the submit event
+        } else {
+            console.error("Login form not found.");
+        }
+    };
+
     // On login button click
     loginForm.addEventListener("submit", (event) => {
         event.preventDefault(); // Prevent default form submission behavior
@@ -97,7 +105,7 @@
                 .then((response) => {
                     if (response.ok) {
                         // Redirect on success
-                        window.location.href = "/Login/Login"; // Adjust target as needed
+                        window.location.href = "Views/Admin/DashBoard";
                     } else {
                         // Show error message box
                         alert("Invalid email or password. Please try again.");
