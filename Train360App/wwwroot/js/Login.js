@@ -103,12 +103,29 @@
                 body: JSON.stringify({ email, password }),
             })
                 .then((response) => {
-                    if (response.ok) {
-                        // Redirect on success
-                        window.location.href = "Views/Admin/DashBoard";
-                    } else {
+                    if (!response.ok) {
                         // Show error message box
                         alert("Invalid email or password. Please try again.");
+                    }
+                    return response.json(); 
+                })
+                .then((data) => {
+                    if (data) {
+                        console.log(data);  // Now you can access the data after the promise resolves
+                        // Redirect on success based on role
+                        switch (data.role) {
+                            case 'Admin':
+                                window.location.href = "/Admin/Dashboard";
+                                break;
+                            case 'Trainee':
+                                window.location.href = "/Trainee/Dashboard";
+                                break;
+                            case 'Mentor':
+                                window.location.href = "/Mentor/Dashboard";
+                                break;
+                            default:
+                                alert("Unrecognized role. Please contact support.");
+                        }
                     }
                 })
                 .catch((err) => {

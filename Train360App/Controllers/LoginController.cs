@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
+using Trainee360App.Models;
 using Trainee360App.Services;
 
 namespace Trainee360App.Controllers
@@ -22,17 +23,12 @@ namespace Trainee360App.Controllers
         [HttpPost]
         public async Task<IActionResult> LoginAsync([FromBody] LoginRequest request)
         {
-            if (string.IsNullOrEmpty(request.Email) || request.Email.Length > 40 || request.Password.Length != 8)
+            User isValidUser = await _userService.ValidateUserCredentialsAsync(request.Email, request.Password);
+            if (isValidUser != null)
             {
-                return BadRequest("Invalid email or password format.");
+                return Ok(new { Message = "Welcome Mentor", role = isValidUser.Role.Name });
             }
-
-            bool isValidUser = await _userService.ValidateUserCredentialsAsync(request.Email, request.Password);
-            if (!isValidUser)
-            {
-                return Unauthorized(new { Message = "Login Failed"});
-            }
-            return Ok();
+            return Unauthorized(new { Message = "Login Failed" });
         }
     }
 }

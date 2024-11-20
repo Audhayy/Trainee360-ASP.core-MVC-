@@ -10,6 +10,10 @@ namespace Trainee360App.Controllers
         {
             return View();
         }
+        public ActionResult DashBoard()
+        {
+            return View();
+        }
 
         // GET: AdminController/Details/5
         public ActionResult Details(int id)

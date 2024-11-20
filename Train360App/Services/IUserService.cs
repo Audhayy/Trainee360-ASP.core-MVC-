@@ -1,8 +1,10 @@
 ﻿
+using Trainee360App.Models;
+
 namespace Trainee360App.Services
 {
     public interface IUserService
     {
-         Task<bool> ValidateUserCredentialsAsync(string email, string password);
+         Task<User> ValidateUserCredentialsAsync(string email, string password);
     }
 }

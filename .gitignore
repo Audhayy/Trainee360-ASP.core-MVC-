@@ -5,3 +5,4 @@ Train360App/obj
 .vs/
 Train360App/Migrations
 Train360App/appsettings.json
+*.cache

@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.CodeAnalysis.Scripting;
+using Trainee360App.Models;
 using Trainee360App.Repositories;
 
 namespace Trainee360App.Services
@@ -11,14 +12,14 @@ namespace Trainee360App.Services
         {
             _userRepository = userRepository;
         }
-        public async Task<bool> ValidateUserCredentialsAsync(string email, string password)
+        public async Task<User> ValidateUserCredentialsAsync(string email, string password)
         {
             var user = await _userRepository.GetUserByEmailAsync(email);
-            if (user == null)
+            if (user != null && password.Equals(user.Password))
             {
-                return false;
+                return user;
             }
-            return password.Equals(user.Password);
+            return user;
         }
     }
 }
