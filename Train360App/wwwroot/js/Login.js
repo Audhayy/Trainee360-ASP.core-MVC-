@@ -44,6 +44,7 @@
     });
 
     window.TriggerFormEvent = function () {
+        const loginForm = document.getElementById("loginForm");
         if (loginForm) {
             loginForm.dispatchEvent(new Event("submit")); // Trigger the submit event
         } else {
@@ -103,11 +104,13 @@
                 body: JSON.stringify({ email, password }),
             })
                 .then((response) => {
-                    if (!response.ok) {
-                        // Show error message box
-                        alert("Invalid email or password. Please try again.");
+                    if (response.status === 401) {
+                        alert("Invalid Password");
+                    } else if (response.status === 404) {
+                        alert("User not Found");
+                    } else {
+                        return response.json();
                     }
-                    return response.json(); 
                 })
                 .then((data) => {
                     if (data) {
@@ -128,10 +131,6 @@
                         }
                     }
                 })
-                .catch((err) => {
-                    console.error("Login failed:", err);
-                    alert("Something went wrong. Please try again later.");
-                });
         }
     });
 });

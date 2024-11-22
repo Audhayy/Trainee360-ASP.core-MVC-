@@ -23,12 +23,23 @@ namespace Trainee360App.Controllers
         [HttpPost]
         public async Task<IActionResult> LoginAsync([FromBody] LoginRequest request)
         {
-            User isValidUser = await _userService.ValidateUserCredentialsAsync(request.Email, request.Password);
-            if (isValidUser != null)
+            try
             {
-                return Ok(new { Message = "Welcome Mentor", role = isValidUser.Role.Name });
+                User isValidUser = await _userService.ValidateUserCredentialsAsync(request.Email, request.Password);
+                return Ok(new { role = isValidUser.Role.Name });
             }
-            return Unauthorized(new { Message = "Login Failed" });
+            catch (UserNotFoundException)
+            {
+                return NotFound();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return Unauthorized();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
         }
     }
 }

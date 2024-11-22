@@ -12,8 +12,8 @@ namespace Trainee360App
 
             // DbSets represent tables in the database
             public DbSet<Role> Roles { get; set; }
-            public DbSet<User> Users { get; set; } // Example: if you have a User table for login/signup
-
+            public DbSet<User> Users { get; set; } 
+            public DbSet<UserAudit> userAudits { get; set; }
             protected override void OnModelCreating(ModelBuilder modelBuilder)
             {
                 base.OnModelCreating(modelBuilder);

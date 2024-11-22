@@ -15,11 +15,21 @@ namespace Trainee360App.Services
         public async Task<User> ValidateUserCredentialsAsync(string email, string password)
         {
             var user = await _userRepository.GetUserByEmailAsync(email);
-            if (user != null && password.Equals(user.Password))
+ 
+            if (user == null)
             {
-                return user;
+                throw new UserNotFoundException(new Messages {});
+            }
+            if (!IsValidPassword(password, user.Password))
+            {
+                throw new UnauthorizedAccessException("Password Mismatch");
             }
             return user;
+        }
+
+        private bool IsValidPassword(string credentialPassword, string userPassword)
+        {
+           return credentialPassword == userPassword;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Data;
+﻿using System.Collections.ObjectModel;
 
 namespace Trainee360App.Models
 {
@@ -14,9 +14,8 @@ namespace Trainee360App.Models
         public bool IsActive { get; set; } = true;
         public string? InsertedBy { get; set; }
         public string? UpdatedBy { get; set; }
-        public DateTime InsertedOn { get; set; }
+        public DateTime InsertedOn { get; set; } = DateTime.Now;
         public DateTime LastUpdatedOn { get; set; }
         public required Role Role { get; set; }
-
     }
 }
